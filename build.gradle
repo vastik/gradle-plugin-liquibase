@@ -37,7 +37,7 @@ pluginBundle {
     website = 'https://github.com/vastik/gradle-plugin-liquibase'
     vcsUrl = 'https://github.com/vastik/gradle-plugin-liquibase'
     description = 'Creates changelog.yml file from include directory'
-    tags = []
+    tags = ['liquibase', 'database']
 
     plugins {
         liquibase {
