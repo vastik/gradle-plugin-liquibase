@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'groovy'
+    id "com.gradle.plugin-publish" version "0.10.1"
+    id "java-gradle-plugin"
+}
+
+
+sourceCompatibility = 1.8
+
+version = "1.0"
+group = "com.vast.gradle"
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.25'
+}
+
+gradlePlugin {
+    plugins {
+        liquibase {
+            id = 'vast.gradle-plugin-liquibase'
+            implementationClass = 'com.vast.gradle.plugin.liquibase.ChangelogBuilderPlugin'
+        }
+    }
+}
+
+pluginBundle {
+    website = 'https://github.com/vastik/gradle-plugin-liquibase'
+    vcsUrl = 'https://github.com/vastik/gradle-plugin-liquibase'
+    description = 'Creates changelog.yml file from include directory'
+    tags = []
+
+    plugins {
+        liquibase {
+            // id is captured from java-gradle-plugin configuration
+            displayName = 'Gradle liquibase plugin'
+        }
+    }
+}
